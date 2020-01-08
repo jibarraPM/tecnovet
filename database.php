@@ -204,8 +204,14 @@ date_default_timezone_set('America/Santiago');
 			$return = mysqli_fetch_object($res );
 			return $return ;
 		}
+		public function detalleControl($id){
+			$sql = "SELECT fecha, nombre,apellido,vacuna, observacion, documento FROM `control` INNER JOIN usuarios on usuarios.id = control.veterinario WHERE mascota=$id";
+			$res = mysqli_query($this->con, $sql);
+			return $res ;
+		}
+
 		public function editar_mascota($id){
-			$sql = "SELECT mascotas.id, nombre,apellido, nombre_mascota, especie, nombre_raza, sexo, fechaNacimiento, color, chip, caracter, estado_mascota, esterilizado,foto FROM `mascotas`
+			$sql = "SELECT mascotas.id, nombre,apellido, nombre_mascota,rut, especie, nombre_raza, sexo, fechaNacimiento, color, chip, caracter, estado_mascota, esterilizado,foto FROM `mascotas`
 			INNER JOIN usuarios
 			ON usuarios.id=mascotas.usuario
 			INNER JOIN razas

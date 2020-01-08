@@ -15,7 +15,7 @@
     <div class="card shadow mb-4">
                 <div class="card-header py-3">
                 <div class="text-right">
-    <a href="agendas.php" class=" btn btn-primary btn-icon-split">
+    <a href="mascotas.php" class=" btn btn-primary btn-icon-split">
         <span class="icon text-white-50">
             <i class="fas fa-calendar"></i>
         </span>

@@ -27,37 +27,29 @@
                         <table id="example" class="display table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>Id</th>
             <th>Dueño</th>
             <th>Nombre</th>
-            <th>Especie</th>
             <th>Raza</th>
             <th>Sexo</th>
             <th>Nacimiento</th>
-            <th>Color</th>
             <th>Chip</th>
             <th>Caracter</th>
             <th>Estado</th>
             <th>Esterilizado</th>
-            <th>Foto</th>
             <th>Acción</th>
           </tr>
         </thead>
         <tfoot>
           <tr>
-          <th>Id</th>
             <th>Dueño</th>
             <th>Nombre</th>
-            <th>Especie</th>
             <th>Raza</th>
             <th>Sexo</th>
             <th>Nacimiento</th>
-            <th>Color</th>
             <th>Chip</th>
             <th>Caracter</th>
             <th>Estado</th>
             <th>Esterilizado</th>
-            <th>Foto</th>
             <th>Acción</th>
           </tr>
         </tfoot>
@@ -87,27 +79,20 @@
 
              ?>
           <tr>
-            <td><?php echo $id;?></td>
             <td><?php echo $nombreUsuario. " ". $apellido;?></td>
             <td><?php echo $nombre_mascota;?></td>
-            <td><?php echo $especie;?></td>
             <td><?php echo $raza;?></td>
             <td><?php echo $sexo;?></td>
             <td><?php echo date("d/m/Y", strtotime($fechaNacimiento));?></td>
-            <td><?php echo $color;?></td>
             <td><?php echo $chip;?></td>
             <td><?php echo $caracter;?></td>
             <td><?php echo $estado;?></td>
             <td><?php echo $esterilizado;?></td>
             <td>
-
-              <?php if ($foto != ""){echo '<img src="data:image/jpeg;base64,'.base64_encode($foto) .'"class="img-fluid img-responsive " width="75" height="75"/>';}
-              else{'<img src="img\no-image-icon.png" />';}?></td>
-            <td>
+              <a href="detalleMascota.php?id=<?php echo $id;?>" class="btn btn-primary btn-circle"><i class="fas fa-info"></i></a>
               <a href="actualizarMascota.php?id=<?php echo $id;?>" class="btn btn-warning btn-circle"><i class="fas fa-edit"></i></a>
               <a href="controlMascota.php?id=<?php echo $id;?>" class="btn btn-primary btn-circle"><i class="fas fa-file-alt"></i></a>
-              <a href="detalleMascota.php?id=<?php echo $id;?>" class="btn btn-primary btn-circle"><i class="fas fa-info"></i></a>
-              <a href="agregarAgendaMascota.php?id=<?php echo $id;?>" class="btn btn-success btn-circle"><i class="fas fa-edit"></i></a>
+              <a href="agregarAgendaMascota.php?id=<?php echo $id;?>" class="btn btn-success btn-circle"><i class="fas fa-calendar"></i></a>
             </td>
           </tr>
           <?php

@@ -35,25 +35,25 @@
         </div>
         <div class="card-body">
             <div class="table-wrapper">
-                <?php  
+                <?php
                     $mascotas= new Database();
 				    if(isset($_POST) && !empty($_POST)){
                         $usuario = $mascotas->sanitize($id);
                         $nombre = $mascotas->sanitize($_POST['nombre']);
                         $especie = $mascotas->sanitize($_POST['especie']);
                         $raza = $mascotas->sanitize($_POST['raza']);
-                        $sexo = $mascotas->sanitize($_POST['sexo']);					
+                        $sexo = $mascotas->sanitize($_POST['sexo']);
                         $fechaNacimiento = $mascotas->sanitize($_POST['fechaNacimiento']);
-                        $color = $mascotas->sanitize($_POST['color']);	
-                        $chip = $mascotas->sanitize($_POST['chip']);	
-                        $caracter = $mascotas->sanitize($_POST['caracter']);	
+                        $color = $mascotas->sanitize($_POST['color']);
+                        $chip = $mascotas->sanitize($_POST['chip']);
+                        $caracter = $mascotas->sanitize($_POST['caracter']);
                         $estado_mascota = $mascotas->sanitize($_POST['estado_mascota']);
                         $esterilizacion = $mascotas->sanitize($_POST['esterilizacion']);
                         $foto = " ";
                     $path = $_FILES["foto"]["tmp_name"];
                    if(is_uploaded_file($path) && !empty($_FILES)){
-                      $foto = addslashes(file_get_contents($_FILES['foto']['tmp_name']));	
-                      }			
+                      $foto = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
+                      }
                         $res = $mascotas->agregarMascota($usuario, $nombre,$especie,$raza,$sexo,$fechaNacimiento,$color,$chip,$caracter,$estado_mascota,$esterilizacion,$foto);
 					if($res){
 						$message= "Datos insertados con éxito";
@@ -62,18 +62,18 @@
 						$message="No se pudieron insertar los datos";
 						$class="alert alert-danger";
 					}
-                        
+
                 ?>
 				<div class="<?php echo $class?>">
 				  <?php echo $message;?>
-				</div>	
+				</div>
                 <?php
 				    }
                 ?>
                 <div class="p-5">
                  <!-- Por defecto el perfil es usuario y el estado es 1-->
                     <form method="post" enctype="multipart/form-data">
-                        
+
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="">Nombre</label>
@@ -105,7 +105,7 @@
 
           <option value=<?php echo $id_usar_raza ?>><?php echo $nombre_raza_usar?></option>
 
-          <?php 
+          <?php
             }
           ?>
          </select>
@@ -116,7 +116,7 @@
                     <label for="">Sexo</label>
                     <select class="form-control" id="sexo" name="sexo">
                       <option value="Macho">Macho</option>
-                      <option value="Hembra">Hembra</option>                      
+                      <option value="Hembra">Hembra</option>
                     </select>
                     </div>
                     <div class="col-sm-6">
@@ -143,17 +143,17 @@
                       <option value="Sociable">Sociable</option>
                       <option value="Independiente">Independinte</option>
 
-                      
+
                     </select>
                     </div>
                     <div class="col-sm-6">
                     <label for="">Estado Mascota</label>
-                    <select class="form-control" id="estado_mascota" name="estado_mascota"> 
+                    <select class="form-control" id="estado_mascota" name="estado_mascota">
                      <option value="Sano">Sano</option>
                      <option value="Vacunación">Vacunación</option>
                      <option value="Post-Operatorio">Post-Operatorio</option>
                      <option value="Tratamiento">Tratamiento</option>
-                     <option value="Fallecida">Fallecida</option>                  
+                     <option value="Fallecida">Fallecida</option>
                     </select>
             </div>
                  </div>
@@ -162,29 +162,29 @@
                     <label for="">Esterilización</label>
                     <select class="form-control" id="esterilizacion" name="esterilizacion">
                       <option value="Si">Si</option>
-                      <option value="No">No</option>                      
+                      <option value="No">No</option>
                     </select>
                     </div>
                     <div class="col-sm-6">
                     <label for="">Foto</label>
-                   
-                    
+
+
                     <input type="file" class="form-control-file file-path validate" id="foto" name="foto" accept="image/*">
                     </div>
             </div>
                  </div>
                   </div>
                   </div>
-                  
-                  
-                  
-                  
-                  
-                  
-            
+
+
+
+
+
+
+
                   </div>
-                  <button type="submit" class="btn btn-primary btn-user btn-block">Agregar</button>                
-                </form>              
+                  <button type="submit" class="btn btn-primary btn-user btn-block">Agregar</button>
+                </form>
         </div>
         </div>
 
