@@ -19,15 +19,15 @@
     </a>
     </div>
   </div>
-  
+
   <div class="card-body">
     <div class="table-responsive">
                 <div class="col-lg-12">
-                    <div class="table-responsive">        
+                    <div class="table-responsive">
                         <table id="example" class="display table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>Id</th>
+            <th>N°</th>
             <th>Fecha</th>
             <th>Veterinario</th>
             <th>Mascota</th>
@@ -43,7 +43,7 @@
         </thead>
         <tfoot>
           <tr>
-            <th>Id</th>
+            <th>N°</th>
             <th>Fecha</th>
             <th>Veterinario</th>
             <th>Mascota</th>
@@ -57,14 +57,16 @@
             <th>Documento</th>
           </tr>
         </tfoot>
-        <?php 
+        <?php
             include('database.php');
             $controles = new Database();
             $listado = $controles->leerControles();
+            $contador = 0;
         ?>
         <tbody>
             <?php
                 while ($row=mysqli_fetch_object($listado)){
+                    $contador+=1;
                     $id=$row->id;
                     $fecha=$row->fecha;
                     $nombre=$row->nombre;
@@ -79,7 +81,7 @@
                     $documento=$row->documento;
              ?>
           <tr>
-            <td><?php echo $id;?></td>
+            <td><?php echo $contador;?></td>
             <td><?php echo date("d/m/Y", strtotime($fecha));?></td>
             <td><?php echo $nombre;?></td>
             <td><?php echo $nombre_mascota;?></td>
@@ -91,10 +93,10 @@
             <td><?php echo $vacuna;?></td>
             <td><?php echo $observacion;?></td>
             <td> <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($documento) .'"class="img-fluid img-responsive " width="75" height="75"/>'; ?></td>
-          </tr> 
-          <?php  
+          </tr>
+          <?php
             }
-          ?>         
+          ?>
         </tbody>
       </table>
     </div>

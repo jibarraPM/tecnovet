@@ -54,6 +54,7 @@
 					                        <table id="example" class="display table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					        <thead>
 					          <tr>
+											<th>N°</th>
 					            <th>Fecha</th>
 					            <th>Veterinario</th>
 					            <th>Vacuna</th>
@@ -63,6 +64,7 @@
 					        </thead>
 					        <tfoot>
 					          <tr>
+											<th>N°</th>
 											<th>Fecha</th>
 					            <th>Veterinario</th>
 					            <th>Vacuna</th>
@@ -72,10 +74,12 @@
 					        </tfoot>
 					        <?php
 					            $listado = $datos->detalleControl($id);
+											$contador = 0;
 					        ?>
 					        <tbody>
 					            <?php
 					                while ($row=mysqli_fetch_object($listado)){
+															$contador+=1;
 					                    $fecha=$row->fecha;
 					                    $nombre=$row->nombre;
 					                    $apellido=$row->apellido;
@@ -84,6 +88,7 @@
 					                    $documento=$row->documento;
 					             ?>
 					          <tr>
+											<td><?php echo $contador;?></td>
 					            <td><?php echo date("d/m/Y", strtotime($fecha));?></td>
 
 					            <td><?php echo $nombre. " ". $apellido;?></td>

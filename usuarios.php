@@ -27,7 +27,7 @@
                         <table id="example" class="display table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>Id</th>
+            <th>N°</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Rut</th>
@@ -40,7 +40,7 @@
         </thead>
         <tfoot>
           <tr>
-            <th>Id</th>
+            <th>N°</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Rut</th>
@@ -55,10 +55,12 @@
             include('database.php');
             $usuarios = new Database();
             $listado = $usuarios->leerUsuarios();
+            $contador = 0;
         ?>
         <tbody>
             <?php
                 while ($row=mysqli_fetch_object($listado)){
+                    $contador+=1;
                     $id=$row->id;
                     $nombre=$row->nombre;
                     $apellido=$row->apellido;
@@ -70,7 +72,7 @@
 
              ?>
           <tr>
-            <td><?php echo $id;?></td>
+            <td><?php echo $contador;?></td>
             <td><?php echo $nombre;?></td>
             <td><?php echo $apellido;?></td>
             <td><?php echo $rut;?></td>
@@ -82,13 +84,13 @@
              $nm="";
              $mascota = $usuarios->mascotaUsuario($id);
              while ($row2=mysqli_fetch_object($mascota)){
-             
-              
+
+
                $nm = $nm.$row2->nombre_mascota;
                $nm = $nm."<br />";
              }
              echo $nm;
-             
+
 
             ?>
             </td>

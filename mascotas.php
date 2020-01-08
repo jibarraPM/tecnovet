@@ -27,6 +27,7 @@
                         <table id="example" class="display table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
+            <th>N°</th>
             <th>Dueño</th>
             <th>Nombre</th>
             <th>Raza</th>
@@ -41,6 +42,7 @@
         </thead>
         <tfoot>
           <tr>
+            <th>N°</th>
             <th>Dueño</th>
             <th>Nombre</th>
             <th>Raza</th>
@@ -57,10 +59,12 @@
             include('database.php');
             $mascotas = new Database();
             $listado = $mascotas->leerMascotas();
+            $contador= 0;
         ?>
         <tbody>
             <?php
                 while ($row=mysqli_fetch_object($listado)){
+                    $contador+=1;
                     $id=$row->id;
                     $nombreUsuario=$row->nombre;
                     $apellido=$row->apellido;
@@ -79,6 +83,7 @@
 
              ?>
           <tr>
+            <td><?php echo $contador;?></td>
             <td><?php echo $nombreUsuario. " ". $apellido;?></td>
             <td><?php echo $nombre_mascota;?></td>
             <td><?php echo $raza;?></td>
